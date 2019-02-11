@@ -1,0 +1,96 @@
+---
+stack:
+  name: "UForge-ELK-template"
+  version: "1"
+  description: "An ELK appliance meant to be used with UForge.\nPreconfigured with default dashboards.\n\nNeeds filebeat to be setup on the Forge.\n\nPrerequisites\nRAM: 8Gb\nCPU: 4GHz\n\nThe amount of CPU, RAM, and storage that the ELK Server will requires depends on the volume of logs: the previous configuration is suitable for analyzing 10 logs files having an output of 100 lines per second. If there are more logs to analyze, then the configuration must be increased accordingly.\n\nWhen deploying this appliance please open to your Forge ports 5601 (Kibana) and 5044 (Logstash).\n\nBlueprint Configuration\nbrooklyn.config:\n    kibana.port: 5601\n    logstash.port: 5044"
+  installation:
+    keyboard: "uk"
+    timezone: "Europe/London"
+    firewall: false
+    rootUser:
+      # Using ssh key (recommended)
+      #password: ""
+      #setPassword: true
+      #sshKeys:
+      #- name: your-root-ssh-key
+      #  publicKey: ssh-rsa XXX...
+      # Using root password
+      #password: "password"
+      #setPassword: true
+  os:
+    name: "CentOS"
+    version: "7"
+    arch: "x86_64"
+    profile: "Minimal"
+    pkgs:
+    - name: "java-1.8.0-openjdk"
+    - name: "java-1.8.0-openjdk-devel"
+  bundles:
+  - name: "ELK"
+    version: "6.4"
+    destination: "/uploads/mysoftware/setup-uforge-elk"
+    maintainer: "USS"
+    files:
+    - name: "setup-uforge-elk-firstboot.sh"
+      bootOrder: 1
+      bootType: "firstboot"
+      tag: "bootscript"
+      source: "configure-elk-server/conf-elk-firstboot.sh"
+      install: true
+      md5sum: "0e8fb77d467b83084a212b18f6d33081"
+      sha256sum: "cf74573eac908164c69d9b34d57718feeb21550bdf1557c8a9d282fab7f1c754"
+    - name: "conf.d"
+      ownerGroup: "root:root"
+      rights: "755"
+      tag: "softwarefile"
+      source: "configure-elk-server/conf.d"
+      files:
+      - name: "02-beats-input.conf"
+        ownerGroup: "root:root"
+        rights: "755"
+        tag: "softwarefile"
+        source: "configure-elk-server/conf.d/02-beats-input.conf"
+        install: true
+        md5sum: "5033f6ae7622d36c14b71bc79c808416"
+        sha256sum: "d260748282af06a9c40db7659116b3a5ed278e85c73668ad9423eeab661d87c6"
+    - name: "elasticsearch-6.4.1-1.noarch.rpm"
+      ownerGroup: "root:root"
+      rights: "755"
+      tag: "softwarefile"
+      source: "/tmp/elasticsearch-6.4.1-1.noarch.rpm"
+      md5sum: "7e91496e9c65a9c2dc301c42d4c54ea6"
+      sha256sum: "2d63f9814ff67edc5c8a8e247ed359a8ef7e23cfbe3a438041a72b44b0be09b2"
+    - name: "elasticsearch.yml"
+      ownerGroup: "root:root"
+      rights: "755"
+      tag: "softwarefile"
+      source: "configure-elk-server/elasticsearch.yml"
+      install: true
+      md5sum: "fd9c6a4481d9d40eb348d8e968aa8649"
+      sha256sum: "de0655bd289a2905f6d253549924674f634d6462e6b97c195dc25b9872ce7277"
+    - name: "kibana-6.4.1-1.x86_64.rpm"
+      ownerGroup: "root:root"
+      rights: "755"
+      tag: "softwarefile"
+      source: "/tmp/kibana-6.4.1-1.x86_64.rpm"
+      md5sum: "9bdb97037f3b935ebdc97d645205faf8"
+      sha256sum: "073269a42ffb045915eff5f20180a9eba9fa1b931f91899bd592be5106ef65f5"
+    - name: "kibana.yml"
+      ownerGroup: "root:root"
+      rights: "755"
+      tag: "softwarefile"
+      source: "configure-elk-server/kibana.yml"
+      install: true
+      md5sum: "4fde6ab4496de3c1de6f756edd27d86a"
+      sha256sum: "caa8176a536b2c3706359df3afed6f498408fdce2d84fc6bc5cb0b40b799415e"
+    - name: "logstash-6.4.1-1.noarch.rpm"
+      ownerGroup: "root:root"
+      rights: "755"
+      tag: "softwarefile"
+      source: "/tmp/logstash-6.4.1-1.noarch.rpm"
+      md5sum: "ca79190a0d7a55fb696d5cb8e45262f4"
+      sha256sum: "3009d8853ec2206e964fa772f1221304179e62121074033cd22a22e341047343"
+    license: {}
+    sourceLogo: "configure-elk-server/logo/elastic_logo.jpg"
+  source_logo: "configure-elk-server/logo/elastic_logo.jpg"
+apiVersion: "1.0"

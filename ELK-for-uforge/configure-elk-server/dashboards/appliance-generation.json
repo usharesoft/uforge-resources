@@ -1,0 +1,72 @@
+{
+  "version": "6.4.0",
+  "objects": [
+    {
+      "id": "2844eb50-9ed8-11e8-88f4-db937d549ef7",
+      "type": "search",
+      "attributes": {
+        "title": "[logs] Generation from appliance",
+        "description": "",
+        "hits": 0,
+        "columns": [
+          "unique_id",
+          "appliance_name",
+          "format",
+          "message",
+          "source"
+        ],
+        "sort": [
+          "@timestamp",
+          "desc"
+        ],
+        "version": 1,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"index\":\"bd3e7970-af76-11e8-9627-11ac98765049\",\"highlightAll\":true,\"version\":true,\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":true,\"index\":\"9a6addb0-9bb9-11e8-abdf-31a6f6c12e6f\",\"key\":\"message\",\"negate\":false,\"params\":{\"query\":\"error\",\"type\":\"phrase\"},\"type\":\"phrase\",\"value\":\"error\"},\"query\":{\"match\":{\"message\":{\"query\":\"error\",\"type\":\"phrase\"}}}},{\"exists\":{\"field\":\"appliance_name\"},\"meta\":{\"negate\":false,\"index\":\"9a6addb0-9bb9-11e8-abdf-31a6f6c12e6f\",\"disabled\":true,\"alias\":\"appliance\",\"type\":\"exists\",\"key\":\"appliance_name\",\"value\":\"exists\"},\"$state\":{\"store\":\"appState\"}},{\"exists\":{\"field\":\"format\"},\"meta\":{\"negate\":false,\"index\":\"9a6addb0-9bb9-11e8-abdf-31a6f6c12e6f\",\"disabled\":true,\"alias\":\"format\",\"type\":\"exists\",\"key\":\"format\",\"value\":\"exists\"},\"$state\":{\"store\":\"appState\"}}]}"
+        }
+      }
+    },{
+      "id": "58d1e5c0-af77-11e8-9627-11ac98765049",
+      "type": "visualization",
+      "attributes": {
+        "title": "[stats] Appliances generated",
+        "visState": "{\"title\":\"[stats] Appliances generated\",\"type\":\"pie\",\"params\":{\"type\":\"pie\",\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"isDonut\":true,\"labels\":{\"show\":true,\"values\":true,\"last_level\":true,\"truncate\":100}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"appliance_name.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"}}]}",
+        "uiStateJSON": "{}",
+        "description": "",
+        "version": 1,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"index\":\"bd3e7970-af76-11e8-9627-11ac98765049\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+        }
+      }
+    },
+    {
+      "id": "1834c280-af77-11e8-9627-11ac98765049",
+      "type": "visualization",
+      "attributes": {
+        "title": "[stats] Target formats used",
+        "visState": "{\"title\":\"[stats] Target formats used\",\"type\":\"pie\",\"params\":{\"type\":\"pie\",\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"isDonut\":true,\"labels\":{\"show\":true,\"values\":true,\"last_level\":true,\"truncate\":100}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"format.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"}}]}",
+        "uiStateJSON": "{}",
+        "description": "",
+        "version": 1,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"index\":\"bd3e7970-af76-11e8-9627-11ac98765049\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+        }
+      }
+    },
+    {
+      "id": "20f33290-9ed2-11e8-88f4-db937d549ef7",
+      "type": "dashboard",
+      "attributes": {
+        "title": "Logs and stats generation from appliance",
+        "hits": 0,
+        "description": "",
+        "panelsJSON": "[{\"embeddableConfig\":{},\"gridData\":{\"h\":30,\"i\":\"1\",\"w\":24,\"x\":24,\"y\":0},\"id\":\"2844eb50-9ed8-11e8-88f4-db937d549ef7\",\"panelIndex\":\"1\",\"type\":\"search\",\"version\":\"6.3.2\"},{\"embeddableConfig\":{},\"gridData\":{\"h\":15,\"i\":\"2\",\"w\":24,\"x\":0,\"y\":0},\"id\":\"58d1e5c0-af77-11e8-9627-11ac98765049\",\"panelIndex\":\"2\",\"type\":\"visualization\",\"version\":\"6.4.0\"},{\"embeddableConfig\":{},\"gridData\":{\"h\":15,\"i\":\"3\",\"w\":24,\"x\":0,\"y\":15},\"id\":\"1834c280-af77-11e8-9627-11ac98765049\",\"panelIndex\":\"3\",\"type\":\"visualization\",\"version\":\"6.4.0\"}]",
+        "optionsJSON": "{\"darkTheme\":false,\"hidePanelTitles\":false,\"useMargins\":true}",
+        "version": 1,
+        "timeRestore": false,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"exists\":{\"field\":\"appliance_name\"},\"meta\":{\"alias\":\"appliance\",\"disabled\":true,\"index\":\"9a6addb0-9bb9-11e8-abdf-31a6f6c12e6f\",\"key\":\"appliance_name\",\"negate\":false,\"type\":\"exists\",\"value\":\"exists\"}},{\"$state\":{\"store\":\"appState\"},\"exists\":{\"field\":\"format\"},\"meta\":{\"alias\":\"format\",\"disabled\":true,\"index\":\"9a6addb0-9bb9-11e8-abdf-31a6f6c12e6f\",\"key\":\"format\",\"negate\":false,\"type\":\"exists\",\"value\":\"exists\"}},{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":true,\"index\":\"9a6addb0-9bb9-11e8-abdf-31a6f6c12e6f\",\"key\":\"message\",\"negate\":false,\"params\":{\"query\":\"error\",\"type\":\"phrase\"},\"type\":\"phrase\",\"value\":\"error\"},\"query\":{\"match\":{\"message\":{\"query\":\"error\",\"type\":\"phrase\"}}}}],\"highlightAll\":true,\"version\":true}"
+        }
+      }
+    }
+  ]
+}
