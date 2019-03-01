@@ -15,8 +15,8 @@ stack:
       #- name: your-root-ssh-key
       #  publicKey: ssh-rsa XXX...
       # Using root password
-      # password: ""
-      # setPassword: true
+      #password: "password"
+      #setPassword: true
   os:
     name: "CentOS"
     version: "7"
