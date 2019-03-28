@@ -2,11 +2,11 @@
 
 ## Prerequisites
 
-* UForge AppCenter (at least version 3.8FP9) (you can use https://uforge.usharesoft.com/uforge/)
-* Hammr (same version than UForge, documentation available here http://docs.usharesoft.com/projects/hammr/en/latest/) (```pip install hammr```)
-* A server to run the ELK instance (at least 4Ghz CPU and 8Gb RAM recommended)
+* UForge AppCenter (at least version 3.8FP9) (you can use https://uforge.usharesoft.com/uforge/).
+* Hammr (same version than UForge, documentation available here http://docs.usharesoft.com/projects/hammr/en/latest/) (```pip install hammr```). Hammr doesn't need to be installed on the same server/VM as UForge AppCenter: feel free to install it on your personal computer or in a container.
+* A server/VM to run the ELK instance (at least 4Ghz CPU and 8GB RAM recommended)
 
-The amount of CPU, RAM, and storage that the ELK Server depends on the volume of logs. The previous configuration is suitable for analyzing 10 logs files having an output of 100 lines per second.
+The amount of CPU, RAM, and storage that the ELK Server needs depends on the volume of logs. The above configuration is suitable for analyzing 10 logs files having an output of 100 lines per second.
 
 ## 1. Import ELK template inside UForge
 
